@@ -1,0 +1,134 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Custom colors from design brief */
+  --color-neon-cyan: #00e5ff;
+  --color-vibrant-purple: #b84fff;
+  --color-golden-amber: #ffd54f;
+  --color-matte-black: #0b0b0b;
+  --color-charcoal-grey: #121212;
+  
+  /* Extended color palette */
+  --color-primary: var(--color-neon-cyan);
+  --color-secondary: var(--color-vibrant-purple);
+  --color-accent: var(--color-golden-amber);
+  --color-background: var(--color-matte-black);
+  --color-surface: var(--color-charcoal-grey);
+  
+  /* Typography */
+  --font-family-heading: 'Poppins', system-ui, sans-serif;
+  --font-family-body: 'Inter', system-ui, sans-serif;
+  --font-family-accent: 'Orbitron', monospace, sans-serif;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-background);
+  color: white;
+  font-family: var(--font-family-body);
+  line-height: 1.6;
+}
+
+/* Custom glow effects */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 20px rgba(184, 79, 255, 0.3);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px rgba(255, 213, 79, 0.3);
+}
+
+/* Hover glow effects */
+.hover-glow-primary:hover {
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow-secondary:hover {
+  box-shadow: 0 0 25px rgba(184, 79, 255, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow-accent:hover {
+  box-shadow: 0 0 25px rgba(255, 213, 79, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-charcoal-grey);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 255, 0.8);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  font-weight: 800;
+}
+
+/* Accent text */
+.font-accent {
+  font-family: var(--font-family-accent);
+}
+
+/* Button base styles */
+.btn-base {
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-matte-black);
+}
+
+.btn-secondary {
+  background: var(--color-secondary);
+  color: white;
+}
+
+.btn-accent {
+  background: var(--color-accent);
+  color: var(--color-matte-black);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
