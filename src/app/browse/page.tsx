@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Layout from '@/components/layout/Layout'
 import SequenceCard, { type Sequence } from '@/components/marketplace/SequenceCard'
@@ -7,20 +8,20 @@ import { SlidersHorizontal } from 'lucide-react'
 // Sample data - replace with actual data from Supabase
 const sampleSequences: Sequence[] = Array.from({ length: 12 }).map((_, i) => ({
   id: String(i + 1),
-  title: [
-    'Christmas Magic Spectacular',
-    'Halloween Haunted House', 
-    'Winter Wonderland Dreams',
-    'Summer Festival Lights',
-    'Easter Celebration Joy',
-    'Fourth of July Fireworks',
-    'Autumn Harvest Display',
-    'Valentine\'s Day Romance',
-    'St. Patrick\'s Day Green',
-    'Thanksgiving Gratitude',
-    'New Year\'s Eve Countdown',
-    'Spring Awakening Bloom'
-  ][i],
+    title: [
+      "Christmas Magic Spectacular",
+      "Halloween Haunted House",
+      "Winter Wonderland Dreams",
+      "Summer Festival Lights",
+      "Easter Celebration Joy",
+      "Fourth of July Fireworks",
+      "Autumn Harvest Display",
+      "Valentine's Day Romance",
+      "St. Patrick's Day Green",
+      "Thanksgiving Gratitude",
+      "New Year's Eve Countdown",
+      "Spring Awakening Bloom"
+    ][i],
   price: 15 + (i * 5) + Math.random() * 20,
   image: 'https://images.unsplash.com/photo-1545558014-8692c3eb5c50?q=80&w=800&auto=format&fit=crop',
   badge: i % 4 === 0 ? 'Hot' : i % 5 === 0 ? 'New' : i % 7 === 0 ? 'Featured' : undefined,
