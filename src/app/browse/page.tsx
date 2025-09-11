@@ -1,47 +1,14 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Layout from '@/components/layout/Layout'
 import SequenceCard, { type Sequence } from '@/components/marketplace/SequenceCard'
 import Button from '@/components/ui/Button'
 import { SlidersHorizontal } from 'lucide-react'
+import { createClient } from '@/lib/supabase/server'
+import type { Database } from '@/types/database'
 
-// Sample data - replace with actual data from Supabase
-const sampleSequences: Sequence[] = Array.from({ length: 12 }).map((_, i) => ({
-  id: String(i + 1),
-  title: [
-    'Christmas Magic Spectacular',
-    'Halloween Haunted House', 
-    'Winter Wonderland Dreams',
-    'Summer Festival Lights',
-    'Easter Celebration Joy',
-    'Fourth of July Fireworks',
-    'Autumn Harvest Display',
-    'Valentine\'s Day Romance',
-    'St. Patrick\'s Day Green',
-    'Thanksgiving Gratitude',
-    'New Year\'s Eve Countdown',
-    'Spring Awakening Bloom'
-  ][i],
-  price: 15 + (i * 5) + Math.random() * 20,
-  image: 'https://images.unsplash.com/photo-1545558014-8692c3eb5c50?q=80&w=800&auto=format&fit=crop',
-  badge: i % 4 === 0 ? 'Hot' : i % 5 === 0 ? 'New' : i % 7 === 0 ? 'Featured' : undefined,
-  rating: 4 + Math.random(),
-  seller: [
-    'LightMaster Pro',
-    'Holiday Creator', 
-    'Sequence Expert',
-    'Display Wizard',
-    'Festive Lights Co'
-  ][i % 5],
-  downloads: Math.floor(Math.random() * 5000) + 100,
-  duration: `${Math.floor(Math.random() * 8) + 2}:${String(Math.floor(Math.random() * 60)).padStart(2, '0')}`,
-  props: [
-    ['RGB Lights', 'Pixel Strips', 'Matrix'],
-    ['Spotlights', 'Floods', 'Laser'],
-    ['DMX Controllers', 'Smart Plugs'],
-    ['Inflatables', 'Props', 'Signs'],
-    ['Music Sync', 'Voice Control']
-  ][Math.floor(Math.random() * 5)]
-}))
+type SequenceRow = Database['public']['Tables']['sequences']['Row'] & {
+  profiles: { full_name: string | null } | null
+}
 
 const Hero: React.FC = () => (
   <section className="relative">
@@ -79,13 +46,13 @@ const Hero: React.FC = () => (
   </section>
 )
 
-const FilterBar: React.FC = () => (
+const FilterBar: React.FC<{ count: number }> = ({ count }) => (
   <div className="border-b border-white/5 mb-8">
     <div className="mx-auto max-w-7xl px-4 sm:px-6 pb-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <h2 className="text-xl font-heading font-semibold text-white">Featured Sequences</h2>
-          <span className="text-sm text-gray-400">({sampleSequences.length} results)</span>
+          <span className="text-sm text-gray-400">({count} results)</span>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm">
@@ -129,21 +96,58 @@ const SequenceGrid: React.FC<{ sequences: Sequence[] }> = ({ sequences }) => {
   )
 }
 
+const BrowseContent = async () => {
+  const supabase = createClient<Database>()
+  const { data, error } = await supabase
+    .from('sequences')
+    .select('id, title, price, thumbnail_url, rating, props_used, purchases_count, profiles(full_name)')
+    .limit(12)
+
+  if (error) {
+    return (
+      <div className="text-center text-red-500">Failed to load sequences</div>
+    )
+  }
+
+  const sequenceData = (data ?? []) as SequenceRow[]
+
+  const sequences: Sequence[] = sequenceData.map((seq) => ({
+    id: seq.id,
+    title: seq.title,
+    price: seq.price,
+    image: seq.thumbnail_url ?? '',
+    badge: undefined,
+    rating: seq.rating ?? undefined,
+    seller: seq.profiles?.full_name ?? 'Unknown',
+    downloads: seq.purchases_count ?? 0,
+    duration: '0:00',
+    props: seq.props_used ?? [],
+  }))
+
+  return (
+    <>
+      <FilterBar count={sequences.length} />
+      <SequenceGrid sequences={sequences} />
+
+      {/* Load More */}
+      <div className="flex justify-center mt-12">
+        <Button variant="outline" size="lg">
+          Load More Sequences
+        </Button>
+      </div>
+    </>
+  )
+}
+
 export default function BrowsePage() {
   return (
     <Layout>
       <div className="min-h-screen bg-background">
         <Hero />
         <main className="mx-auto max-w-7xl px-4 sm:px-6 pb-16">
-          <FilterBar />
-          <SequenceGrid sequences={sampleSequences} />
-          
-          {/* Load More */}
-          <div className="flex justify-center mt-12">
-            <Button variant="outline" size="lg">
-              Load More Sequences
-            </Button>
-          </div>
+          <Suspense fallback={<div className="text-center text-gray-400">Loading sequences...</div>}>
+            <BrowseContent />
+          </Suspense>
         </main>
       </div>
     </Layout>
