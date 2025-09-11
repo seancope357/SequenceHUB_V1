@@ -1,7 +1,4 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+/* Using system fonts to avoid external font fetching */
 @import "tailwindcss";
 
 @theme {
@@ -20,9 +17,9 @@
   --color-surface: var(--color-charcoal-grey);
   
   /* Typography */
-  --font-family-heading: 'Poppins', system-ui, sans-serif;
-  --font-family-body: 'Inter', system-ui, sans-serif;
-  --font-family-accent: 'Orbitron', monospace, sans-serif;
+  --font-family-heading: system-ui, sans-serif;
+  --font-family-body: system-ui, sans-serif;
+  --font-family-accent: monospace, sans-serif;
 }
 
 /* Base styles */
