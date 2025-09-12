@@ -4,27 +4,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-@theme {
-  /* Custom colors from design brief */
-  --color-neon-cyan: #00e5ff;
-  --color-vibrant-purple: #b84fff;
-  --color-golden-amber: #ffd54f;
-  --color-matte-black: #0b0b0b;
-  --color-charcoal-grey: #121212;
-  
-  /* Extended color palette */
-  --color-primary: var(--color-neon-cyan);
-  --color-secondary: var(--color-vibrant-purple);
-  --color-accent: var(--color-golden-amber);
-  --color-background: var(--color-matte-black);
-  --color-surface: var(--color-charcoal-grey);
-  
-  /* Typography */
-  --font-family-heading: 'Poppins', system-ui, sans-serif;
-  --font-family-body: 'Inter', system-ui, sans-serif;
-  --font-family-accent: 'Orbitron', monospace, sans-serif;
-}
-
 /* Base styles */
 * {
   box-sizing: border-box;
