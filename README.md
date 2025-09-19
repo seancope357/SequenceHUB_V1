@@ -100,6 +100,9 @@ src/
    - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`: Your Stripe publishable key
    - `STRIPE_SECRET_KEY`: Your Stripe secret key
 
+   These variables must be defined. The application will throw an error if
+   `NEXT_PUBLIC_SUPABASE_URL` or `NEXT_PUBLIC_SUPABASE_ANON_KEY` is missing.
+
 4. **Run the development server**:
    ```bash
    npm run dev
