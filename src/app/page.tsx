@@ -2,32 +2,68 @@ import Link from 'next/link'
 import Layout from '@/components/layout/Layout'
 import Button from '@/components/ui/Button'
 import { Play, Star, TrendingUp } from 'lucide-react'
+import SequenceCard from '@/components/marketplace/SequenceCard'
+import Input from '@/components/ui/Input'
+
+// Sample data - replace with actual data from Supabase
+const sampleSequences = Array.from({ length: 8 }).map((_, i) => ({
+  id: String(i + 1),
+  title: [
+    'Christmas Magic Spectacular',
+    'Halloween Haunted House',
+    'Winter Wonderland Dreams',
+    'Summer Festival Lights',
+    'Easter Celebration Joy',
+    'Fourth of July Fireworks',
+    'Autumn Harvest Display',
+    'Valentine\'s Day Romance',
+  ][i],
+  price: 15 + (i * 5) + Math.random() * 20,
+  image: 'https://images.unsplash.com/photo-1545558014-8692c3eb5c50?q=80&w=800&auto=format&fit=crop',
+  badge: i % 4 === 0 ? 'Hot' : i % 5 === 0 ? 'New' : i % 7 === 0 ? 'Featured' : undefined,
+  rating: 4 + Math.random(),
+  seller: [
+    'LightMaster Pro',
+    'Holiday Creator',
+    'Sequence Expert',
+    'Display Wizard',
+    'Festive Lights Co'
+  ][i % 5],
+  downloads: Math.floor(Math.random() * 5000) + 100,
+  duration: `${Math.floor(Math.random() * 8) + 2}:${String(Math.floor(Math.random() * 60)).padStart(2, '0')}`,
+  props: [
+    ['RGB Lights', 'Pixel Strips', 'Matrix'],
+    ['Spotlights', 'Floods', 'Laser'],
+    ['Inflatables', 'Props', 'Signs'],
+    ['Music Sync', 'Voice Control']
+  ][Math.floor(Math.random() * 4)]
+}))
 
 export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-background via-surface to-background">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5"></div>
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
-          <h1 className="text-6xl md:text-8xl font-heading font-extrabold mb-6">
+      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-background via-surface to-background overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5 animate-gradient-shift"></div>
+        <div className="relative z-10 max-w-5xl mx-auto text-center px-4 py-16">
+          <h1 className="text-5xl md:text-7xl font-heading font-extrabold leading-tight mb-6 drop-shadow-lg">
             The <span className="text-primary">xLight</span>{' '}
             <span className="text-secondary">Sequence</span>{' '}
             <span className="text-accent">Marketplace</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
             Discover, purchase, and sell premium xLights sequences from creators worldwide.
             Professional quality sequences for every occasion.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/browse">
-              <Button size="lg" className="px-8">
+              <Button size="lg" className="px-10 py-3 text-lg shadow-lg hover:shadow-primary/50 transition-all duration-300">
                 Browse Sequences
               </Button>
             </Link>
             <Link href="/become-seller">
-              <Button variant="outline" size="lg" accent="secondary" className="px-8">
+              <Button variant="outline" size="lg" accent="secondary" className="px-10 py-3 text-lg shadow-lg hover:shadow-secondary/50 transition-all duration-300">
                 Become a Seller
               </Button>
             </Link>
@@ -39,35 +75,35 @@ export default function Home() {
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-heading font-bold mb-4">
+            <h2 className="text-4xl font-heading font-bold mb-6">
               Featured <span className="text-primary">Creators</span>
             </h2>
-            <p className="text-gray-400 text-lg">
+            <p className="text-gray-400 text-lg mb-12">
               Discover sequences from our top-rated creators
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-surface rounded-xl p-6 border border-primary/20 hover-glow-primary transition-all">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center mr-4">
-                    <span className="font-bold text-background">C{i}</span>
+              <div key={i} className="bg-surface rounded-xl p-8 border border-primary/20 hover-glow-primary transition-all duration-300">
+                <div className="flex items-center mb-6">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center mr-4 text-xl font-bold text-background">
+                    C{i}
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-white">Creator {i}</h3>
-                    <div className="flex items-center text-accent">
+                    <h3 className="font-heading font-bold text-white text-lg">Creator {i}</h3>
+                    <div className="flex items-center text-accent mt-1">
                       <Star className="w-4 h-4 fill-current mr-1" />
                       <span className="text-sm">4.9 (120 reviews)</span>
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-400 mb-4">
+                <p className="text-gray-400 mb-6 leading-relaxed">
                   Specializing in Halloween and Christmas sequences with over 50 premium designs.
                 </p>
                 <div className="flex justify-between items-center">
-                  <span className="text-primary font-bold">24 Sequences</span>
-                  <Link href="#" className="text-secondary hover:text-accent transition-colors">
+                  <span className="text-primary font-bold text-base">24 Sequences</span>
+                  <Link href="#" className="text-secondary hover:text-accent transition-colors text-base font-medium">
                     View Profile →
                   </Link>
                 </div>
@@ -81,63 +117,47 @@ export default function Home() {
       <section className="py-20 px-6 bg-surface/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-heading font-bold mb-4">
-              Top <span className="text-secondary">Sequences</span>
+            <h2 className="text-4xl font-heading font-bold mb-6">
+              Top <span className="text-accent">Sequences</span>
             </h2>
-            <p className="text-gray-400 text-lg">
-              Most popular sequences this month
+            <p className="text-gray-400 text-lg mb-12">
+              Explore the most popular and highly-rated sequences on the marketplace.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="bg-surface rounded-xl overflow-hidden border border-primary/20 hover-glow-primary transition-all group">
-                <div className="relative aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                  <Play className="w-12 h-12 text-white opacity-80 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute top-2 right-2 bg-accent text-background text-xs font-bold px-2 py-1 rounded">
-                    ${(i * 5 + 10)}.99
-                  </div>
-                </div>
-                <div className="p-4">
-                  <h3 className="font-heading font-bold text-white mb-2">
-                    Christmas Magic {i}
-                  </h3>
-                  <p className="text-sm text-gray-400 mb-3">
-                    Perfect for residential displays with 32 channels and smooth transitions.
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-accent">
-                      <Star className="w-4 h-4 fill-current mr-1" />
-                      <span className="text-sm">4.8</span>
-                    </div>
-                    <div className="flex items-center text-primary">
-                      <TrendingUp className="w-4 h-4 mr-1" />
-                      <span className="text-sm">{i * 120} sales</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {/* SequenceCard components will go here */}
+            {sampleSequences.map((sequence) => (
+              <SequenceCard key={sequence.id} sequence={sequence} />
             ))}
+          </div>
+          
+          <div className="text-center mt-16">
+            <Link href="/browse">
+              <Button size="lg" variant="outline" accent="primary" className="px-10 py-3 text-lg shadow-lg hover:shadow-primary/50 transition-all duration-300">
+                View All Sequences
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Newsletter Section */}
       <section className="py-20 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-heading font-bold mb-4">
-            Stay Updated
+        <div className="max-w-3xl mx-auto text-center bg-surface rounded-xl p-10 border border-primary/20 hover-glow-accent transition-all duration-300">
+          <h2 className="text-4xl font-heading font-bold mb-6">
+            Stay Updated with <span className="text-accent">SequenceHUB</span>
           </h2>
-          <p className="text-gray-400 mb-8">
-            Get notified about new sequences, featured creators, and special offers.
+          <p className="text-gray-400 text-lg mb-12">
+            Subscribe to our newsletter for the latest sequences, creator spotlights, and exclusive offers.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <input
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Input
               type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 bg-surface border border-primary/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="Your email address"
+              className="max-w-sm w-full bg-background border-primary/30 focus:border-accent transition-colors text-white px-4 py-2 rounded-md"
             />
-            <Button>
+            <Button accent="accent" className="px-8 py-2 text-lg shadow-lg hover:shadow-accent/50 transition-all duration-300">
               Subscribe
             </Button>
           </div>
