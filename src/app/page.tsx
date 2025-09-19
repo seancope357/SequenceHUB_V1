@@ -19,7 +19,7 @@ const sampleSequences = Array.from({ length: 8 }).map((_, i) => ({
     'Valentine\'s Day Romance',
   ][i],
   price: 15 + (i * 5) + Math.random() * 20,
-  image: 'https://images.unsplash.com/photo-1545558014-8692c3eb5c50?q=80&w=800&auto=format&fit=crop',
+  image: `https://your-supabase-url.supabase.co/storage/v1/object/public/sequence-images/sample-image-${i + 1}.jpg`, // Placeholder for Supabase URL
   badge: i % 4 === 0 ? 'Hot' : i % 5 === 0 ? 'New' : i % 7 === 0 ? 'Featured' : undefined,
   rating: 4 + Math.random(),
   seller: [
