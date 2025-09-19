@@ -80,7 +80,7 @@ const SequenceCard: React.FC<{
         </div>
       </div>
 
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-2">
         {/* Title and Price */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
