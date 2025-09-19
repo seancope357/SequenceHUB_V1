@@ -36,7 +36,7 @@ export default function Home() {
       </section>
 
       {/* Featured Creators */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-heading font-bold mb-4">
@@ -78,7 +78,7 @@ export default function Home() {
       </section>
 
       {/* Top Sequences Preview */}
-      <section className="py-20 px-4 bg-surface/30">
+      <section className="py-20 px-6 bg-surface/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-heading font-bold mb-4">
@@ -123,7 +123,7 @@ export default function Home() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-6">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-heading font-bold mb-4">
             Stay Updated
