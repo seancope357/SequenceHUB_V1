@@ -1,10 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '@/components/auth/AuthProvider'
 import { uploadImage } from '@/lib/supabase/storage'
 import { supabase } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
+
+import ProfilePictureUpload from './ProfilePictureUpload';
+import SequenceUploadForm from './SequenceUploadForm';
+import EditProfileSection from './EditProfileSection';
 
 export default function SellerDashboard() {
   const { user, loading } = useAuth()
@@ -21,12 +25,17 @@ export default function SellerDashboard() {
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
 
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login')
+    }
+  }, [loading, user, router])
+
   if (loading) {
     return <div>Loading...</div>
   }
 
   if (!user) {
-    router.push('/login')
     return null
   }
 
@@ -197,6 +206,9 @@ export default function SellerDashboard() {
 
       {error && <p className="mt-4 text-red-600">Error: {error}</p>}
       {success && <p className="mt-4 text-green-600">Success: {success}</p>}
+      <ProfilePictureUpload />
+      <SequenceUploadForm />
+        <EditProfileSection />
     </div>
   )
 }
