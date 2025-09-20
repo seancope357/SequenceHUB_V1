@@ -24,31 +24,19 @@ const Hero: React.FC = () => (
             <Button variant="soft" size="lg" accent="secondary">Upload Your Own</Button>
           </div>
         </div>
-        <div className="w-full lg:w-[420px] rounded-2xl border border-white/5 bg-surface/60 p-5 shadow-lg shadow-black/30 [box-shadow:0_0_0_1px_rgba(255,255,255,0.06),0_8px_30px_rgba(0,0,0,0.5)] backdrop-blur-md">
-          <div className="text-sm text-gray-300 mb-3">Quick search</div>
-          <div className="flex gap-2">
-            <div className="relative flex-1">
-              <input
-                className="w-full rounded-full bg-background/60 border border-white/10 px-4 h-11 text-sm text-white placeholder-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                placeholder="Search by name, creator, or props..."
-                type="text"
-              />
-            </div>
-            <Button>Search</Button>
-          </div>
-        </div>
+        {/* Quick search removed */}
       </div>
     </div>
   </section>
 )
 
-const FilterBar: React.FC = () => (
-  <div className="border-b border-white/5 mb-8">
+const FilterBar: React.FC<{ sequences: Sequence[] }> = ({ sequences }) => (
+  <div className="border-b border-white/5 mb-8 mt-8">
     <div className="mx-auto max-w-7xl px-4 sm:px-6 pb-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <h2 className="text-xl font-heading font-semibold text-white">Featured Sequences</h2>
-          <span className="text-sm text-gray-400">({sampleSequences.length} results)</span>
+          <span className="text-sm text-gray-400">({sequences.length} results)</span>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm">
@@ -140,15 +128,13 @@ export default function MarketplacePage() {
     <Layout>
       <div className="min-h-screen bg-background">
         <Hero />
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 pb-16">
-          <FilterBar />
+        <main className="mx-auto max-w-7xl px-4 sm:px-6 py-8">
+          <FilterBar sequences={sequences} />
           <SequenceGrid sequences={sequences} />
-          
+
           {/* Load More */}
-          <div className="flex justify-center mt-12">
-            <Button variant="outline" size="lg">
-              Load More Sequences
-            </Button>
+          <div className="text-center py-8">
+            <Button variant="secondary">Load More</Button>
           </div>
         </main>
       </div>

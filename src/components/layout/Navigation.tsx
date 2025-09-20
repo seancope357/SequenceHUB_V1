@@ -27,11 +27,11 @@ export default function Navigation() {
           {/* Center - Search */}
           <div className="hidden md:flex items-center gap-2 flex-1 max-w-md mx-8">
             <div className="relative w-full">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Search className="h-5 w-5 text-gray-400" />
               </div>
               <input
-                className="w-full rounded-full bg-surface/60 border border-white/10 px-4 pl-11 h-11 text-sm text-white placeholder-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                className="w-full rounded-full bg-surface/60 border border-white/10 px-4 pl-10 pr-4 h-11 text-sm text-white placeholder-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                 placeholder="Search sequences, creators, or props..."
                 type="text"
               />
@@ -80,11 +80,11 @@ export default function Navigation() {
           <div className="md:hidden py-3 border-t border-white/5">
             <div className="flex gap-2">
               <div className="relative flex-1">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Search className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
-                  className="w-full rounded-full bg-surface/60 border border-white/10 px-4 pl-11 h-11 text-sm text-white placeholder-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  className="w-full rounded-full bg-surface/60 border border-white/10 px-4 pl-10 pr-4 h-11 text-sm text-white placeholder-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                   placeholder="Search sequences..."
                   type="text"
                 />

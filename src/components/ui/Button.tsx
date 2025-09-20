@@ -27,19 +27,19 @@ const Button: React.FC<ButtonProps> = ({
 
   const accents = {
     primary: {
-      solid: 'bg-gradient-to-b from-primary to-primary/90 text-background shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] active:translate-y-px focus-visible:ring-primary/50',
+      solid: 'bg-gradient-to-b from-primary to-primary/90 text-background shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] active:translate-y-px focus-visible:ring-primary/50 hover:from-background hover:to-background hover:text-primary hover:shadow-primary/50',
       soft: 'bg-primary/15 text-primary border border-primary/20 backdrop-blur-md focus-visible:ring-primary/50',
       outline: 'border border-primary/40 text-primary hover:border-primary/60 hover:bg-primary/5 focus-visible:ring-primary/50',
       ghost: 'text-primary hover:bg-primary/10 focus-visible:ring-primary/50',
     },
     secondary: {
-      solid: 'bg-gradient-to-b from-secondary to-secondary/90 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] active:translate-y-px focus-visible:ring-secondary/50',
+      solid: 'bg-gradient-to-b from-secondary to-secondary/90 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] active:translate-y-px focus-visible:ring-secondary/50 hover:from-background hover:to-background hover:text-secondary hover:shadow-secondary/50',
       soft: 'bg-secondary/15 text-secondary border border-secondary/20 backdrop-blur-md focus-visible:ring-secondary/50',
       outline: 'border border-secondary/40 text-secondary hover:border-secondary/60 hover:bg-secondary/5 focus-visible:ring-secondary/50',
       ghost: 'text-secondary hover:bg-secondary/10 focus-visible:ring-secondary/50',
     },
     accent: {
-      solid: 'bg-gradient-to-b from-accent to-accent/90 text-background shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] active:translate-y-px focus-visible:ring-accent/50',
+      solid: 'bg-gradient-to-b from-accent to-accent/90 text-background shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] active:translate-y-px focus-visible:ring-accent/50 hover:from-background hover:to-background hover:text-accent hover:shadow-accent/50',
       soft: 'bg-accent/15 text-accent border border-accent/20 backdrop-blur-md focus-visible:ring-accent/50',
       outline: 'border border-accent/40 text-accent hover:border-accent/60 hover:bg-accent/5 focus-visible:ring-accent/50',
       ghost: 'text-accent hover:bg-accent/10 focus-visible:ring-accent/50',
