@@ -8,14 +8,17 @@ export const createClient = () => {
     {
       cookies: {
         get(name: string) {
-          return cookies().get(name)?.value
-        },
-        set(name: string, value: string, options: CookieOptions) {
-          cookies().set({ name, value, ...options })
-        },
-        remove(name: string, options: CookieOptions) {
-          cookies().set({ name, value: '', ...options })
-        },
+            const cookieStore = cookies()
+            return cookieStore.get(name)?.value
+          },
+          set(name: string, value: string, options: CookieOptions) {
+            const cookieStore = cookies()
+            cookieStore.set(name, value, options)
+          },
+          remove(name: string, options: CookieOptions) {
+            const cookieStore = cookies()
+            cookieStore.set(name, '', options)
+          },
       },
     },
   )
