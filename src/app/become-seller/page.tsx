@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import Layout from '../../components/layout/layout'
-import { Button } from '../../components/ui/button'
-import { Input } from '../../components/ui/input'
-import { Label } from '../../components/ui/label'
+import Layout from '../../components/layout/Layout'
+import Button from '../../components/ui/Button'
+import Input from '../../components/ui/Input'
+import { Label } from '../../components/ui/Label'
 
 export default function BecomeSellerPage() {
   return (
