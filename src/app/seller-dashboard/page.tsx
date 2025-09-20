@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import ProfilePictureUpload from './ProfilePictureUpload';
 import SequenceUploadForm from './SequenceUploadForm';
 import EditProfileSection from './EditProfileSection';
+import SellerSequences from './SellerSequences';
 
 export default function SellerDashboard() {
   const { user, loading } = useAuth()
@@ -209,6 +210,7 @@ export default function SellerDashboard() {
       <ProfilePictureUpload />
       <SequenceUploadForm />
         <EditProfileSection />
+        <SellerSequences />
     </div>
   )
 }
