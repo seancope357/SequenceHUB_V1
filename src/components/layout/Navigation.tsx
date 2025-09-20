@@ -31,7 +31,7 @@ export default function Navigation() {
                 <Search className="h-5 w-5 text-gray-400" />
               </div>
               <input
-                className="w-full rounded-full bg-surface/60 border border-white/10 px-4 pl-10 pr-4 h-11 text-sm text-white placeholder-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                className="w-full rounded-full bg-surface/60 border border-white/10 px-4 pl-14 pr-4 h-11 text-sm text-white placeholder-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                 placeholder="Search sequences, creators, or props..."
                 type="text"
               />
@@ -84,7 +84,7 @@ export default function Navigation() {
                   <Search className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
-                  className="w-full rounded-full bg-surface/60 border border-white/10 px-4 pl-10 pr-4 h-11 text-sm text-white placeholder-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  className="w-full rounded-full bg-surface/60 border border-white/10 px-4 pl-14 pr-4 h-11 text-sm text-white placeholder-gray-400 focus:border-primary/40 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                   placeholder="Search sequences..."
                   type="text"
                 />
