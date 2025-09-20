@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Star, Play, Heart } from 'lucide-react'
+import { Star, StarHalf, Play, Heart } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 
@@ -42,6 +42,8 @@ const SequenceCard: React.FC<{
   className = '',
   ...props
 }) => {
+  const rating = sequence.rating ?? 0
+
   return (
     <Card className={`group hover:shadow-xl hover:shadow-black/40 transition-all duration-300 ${className}`} {...props}>
       {/* Image Section */}
@@ -101,16 +103,21 @@ const SequenceCard: React.FC<{
           {sequence.rating && (
             <div className="flex items-center gap-1">
               <div className="flex items-center">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`w-3 h-3 ${
-                      i < sequence.rating! 
-                        ? 'text-accent fill-accent' 
-                        : 'text-gray-600'
-                    }`}
-                  />
-                ))}
+                {Array.from({ length: 5 }).map((_, i) => {
+                  if (i < Math.floor(rating)) {
+                    return (
+                      <Star key={i} className="w-3 h-3 text-accent fill-accent" />
+                    )
+                  }
+
+                  if (i < Math.round(rating)) {
+                    return (
+                      <StarHalf key={i} className="w-3 h-3 text-accent fill-accent" />
+                    )
+                  }
+
+                  return <Star key={i} className="w-3 h-3 text-gray-600" />
+                })}
               </div>
               <span className="text-accent font-medium">{sequence.rating.toFixed(1)}</span>
             </div>
