@@ -4,42 +4,65 @@ import Button from '@/components/ui/Button'
 import { Play, Star, TrendingUp } from 'lucide-react'
 import SequenceCard from '@/components/marketplace/SequenceCard'
 import Input from '@/components/ui/Input'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 
 // Sample data - replace with actual data from Supabase
-const sampleSequences = Array.from({ length: 8 }).map((_, i) => ({
-  id: String(i + 1),
-  title: [
-    'Christmas Magic Spectacular',
-    'Halloween Haunted House',
-    'Winter Wonderland Dreams',
-    'Summer Festival Lights',
-    'Easter Celebration Joy',
-    'Fourth of July Fireworks',
-    'Autumn Harvest Display',
-    'Valentine\'s Day Romance',
-  ][i],
-  price: 15 + (i * 5) + Math.random() * 20,
-  image: `https://your-supabase-url.supabase.co/storage/v1/object/public/sequence-images/sample-image-${i + 1}.jpg`, // Placeholder for Supabase URL
-  badge: i % 4 === 0 ? 'Hot' : i % 5 === 0 ? 'New' : i % 7 === 0 ? 'Featured' : undefined,
-  rating: 4 + Math.random(),
-  seller: [
-    'LightMaster Pro',
-    'Holiday Creator',
-    'Sequence Expert',
-    'Display Wizard',
-    'Festive Lights Co'
-  ][i % 5],
-  downloads: Math.floor(Math.random() * 5000) + 100,
-  duration: `${Math.floor(Math.random() * 8) + 2}:${String(Math.floor(Math.random() * 60)).padStart(2, '0')}`,
-  props: [
-    ['RGB Lights', 'Pixel Strips', 'Matrix'],
-    ['Spotlights', 'Floods', 'Laser'],
-    ['Inflatables', 'Props', 'Signs'],
-    ['Music Sync', 'Voice Control']
-  ][Math.floor(Math.random() * 4)]
-}))
+// const sampleSequences = Array.from({ length: 8 }).map((_, i) => ({
+//   id: String(i + 1),
+//   title: [
+//     'Christmas Magic Spectacular',
+//     'Halloween Haunted House',
+//     'Winter Wonderland Dreams',
+//     'Summer Festival Lights',
+//     'Easter Celebration Joy',
+//     'Fourth of July Fireworks',
+//     'Autumn Harvest Display',
+//     'Valentine\'s Day Romance',
+//   ][i],
+//   price: 15 + (i * 5) + Math.random() * 20,
+//   image: `https://your-supabase-url.supabase.co/storage/v1/object/public/sequence-images/sample-image-${i + 1}.jpg`, // Placeholder for Supabase URL
+//   badge: i % 4 === 0 ? 'Hot' : i % 5 === 0 ? 'New' : i % 7 === 0 ? 'Featured' : undefined,
+//   rating: 4 + Math.random(),
+//   seller: [
+//     'LightMaster Pro',
+//     'Holiday Creator',
+//     'Sequence Expert',
+//     'Display Wizard',
+//     'Festive Lights Co'
+//   ][i % 5],
+//   downloads: Math.floor(Math.random() * 5000) + 100,
+//   duration: `${Math.floor(Math.random() * 8) + 2}:${String(Math.floor(Math.random() * 60)).padStart(2, '0')}`,
+//   props: [
+//     ['RGB Lights', 'Pixel Strips', 'Matrix'],
+//     ['Spotlights', 'Floods', 'Laser'],
+//     ['Inflatables', 'Props', 'Signs'],
+//     ['Music Sync', 'Voice Control']
+//   ][Math.floor(Math.random() * 4)]
+// }))
 
-export default function Home() {
+export default async function Home() {
+  const supabase = createServerComponentClient({ cookies })
+  const { data: sequences, error } = await supabase.from('sequences').select('*')
+
+  if (error) {
+    console.error('Error fetching sequences:', error)
+  }
+
+  const displayedSequences = sequences?.map(seq => ({
+    id: seq.id,
+    title: seq.title,
+    description: seq.description,
+    price: seq.price,
+    image: seq.thumbnail_url || seq.preview_url || seq.file_url, // Use thumbnail, then preview, then main file
+    badge: undefined, // You might want to add logic for badges based on your data
+    rating: seq.rating || 0,
+    seller: 'Unknown Seller', // You'll need to fetch seller info from the profiles table
+    downloads: seq.purchases_count || 0,
+    duration: 'N/A', // You might need to add duration to your sequences table
+    props: seq.props_used || [],
+  })) || []
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -127,7 +150,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {/* SequenceCard components will go here */}
-            {sampleSequences.map((sequence) => (
+            {displayedSequences.map((sequence) => (
               <SequenceCard key={sequence.id} sequence={sequence} />
             ))}
           </div>
