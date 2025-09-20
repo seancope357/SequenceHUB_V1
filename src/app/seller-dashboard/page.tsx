@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth } from '@/components/auth/AuthProvider';
 import { useRouter } from 'next/navigation';
 import SequenceUploadForm from './SequenceUploadForm';
 import OverviewTab from './OverviewTab';
@@ -9,17 +9,13 @@ import MySequencesTab from './MySequencesTab';
 import ProfileSettingsTab from './ProfileSettingsTab';
 
 export default function SellerDashboardPage() {
-  const { userId, isLoaded } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
 
   const [activeTab, setActiveTab] = useState('overview'); // Default active tab
 
-  if (!isLoaded) {
-    return <div className="flex justify-center items-center h-screen text-xl">Loading...</div>;
-  }
-
-  if (!userId) {
-    router.push('/sign-in');
+  if (!user) {
+    router.push('/login');
     return null;
   }
 

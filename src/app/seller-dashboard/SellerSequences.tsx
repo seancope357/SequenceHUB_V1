@@ -34,8 +34,8 @@ export default function SellerSequences() {
         }
 
         setSequences(data || []);
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err: unknown) {
+        setError(err instanceof Error ? err.message : 'An unknown error occurred');
       } finally {
         setLoading(false);
       }
@@ -56,7 +56,7 @@ export default function SellerSequences() {
     <div className="p-4 border rounded-lg shadow-md bg-white">
       <h2 className="text-xl font-semibold mb-4">Your Uploaded Sequences</h2>
       {sequences.length === 0 ? (
-        <p>You haven't uploaded any sequences yet.</p>
+        <p>You haven&apos;t uploaded any sequences yet.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {sequences.map((sequence) => (

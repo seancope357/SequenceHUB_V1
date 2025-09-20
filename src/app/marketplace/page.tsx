@@ -134,7 +134,7 @@ export default function MarketplacePage() {
 
           {/* Load More */}
           <div className="text-center py-8">
-            <Button variant="secondary">Load More</Button>
+            <Button variant="solid" accent="secondary">Load More</Button>
           </div>
         </main>
       </div>
