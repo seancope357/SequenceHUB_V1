@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Layout from '@/components/layout/Layout'
 import Button from '@/components/ui/Button'
-import { Play, Star, TrendingUp } from 'lucide-react'
+import { Star } from 'lucide-react'
 import SequenceCard from '@/components/marketplace/SequenceCard'
 import Input from '@/components/ui/Input'
 import { getSequences } from '@/components/supabase-data-fetcher'

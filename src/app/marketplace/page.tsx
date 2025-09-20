@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from '@/components/layout/Layout'
 import SequenceCard, { type Sequence } from '@/components/marketplace/SequenceCard'
 import Button from '@/components/ui/Button'
-import { Filter, SlidersHorizontal } from 'lucide-react'
+import { SlidersHorizontal } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const Hero: React.FC = () => (
