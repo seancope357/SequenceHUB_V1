@@ -4,7 +4,7 @@ import React from 'react'
 import Layout from '@/components/layout/Layout'
 import SequenceCard, { type Sequence } from '@/components/marketplace/SequenceCard'
 import Button from '@/components/ui/Button'
-import { SlidersHorizontal } from 'lucide-react'
+import { SlidersHorizontal, Search } from 'lucide-react'
 
 // Sample data - replace with actual data from Supabase
 const sampleSequences: Sequence[] = Array.from({ length: 12 }).map((_, i) => ({
@@ -73,7 +73,9 @@ const Hero: React.FC = () => (
                 type="text"
               />
             </div>
-            <Button>Search</Button>
+            <Button>
+              <Search className="h-4 w-4" />
+            </Button>
           </div>
         </div>
       </div>

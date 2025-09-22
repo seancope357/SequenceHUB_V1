@@ -157,7 +157,9 @@ export default function SearchPage() {
                   className="w-full pl-12 pr-4 py-3 bg-surface border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary"
                 />
               </div>
-              <Button type="submit">Search</Button>
+              <Button type="submit">
+                <Search className="h-4 w-4" />
+              </Button>
               <Button
                 type="button"
                 variant="outline"

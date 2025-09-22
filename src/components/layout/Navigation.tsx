@@ -48,7 +48,9 @@ export default function Navigation() {
                 type="text"
               />
             </div>
-            <Button size="md">Search</Button>
+            <Button size="md">
+              <Search className="h-4 w-4" />
+            </Button>
           </div>
 
           {/* Right - Cart, User Actions */}
@@ -123,7 +125,9 @@ export default function Navigation() {
                   type="text"
                 />
               </div>
-              <Button size="md">Go</Button>
+              <Button size="md">
+                <Search className="h-4 w-4" />
+              </Button>
             </div>
           </div>
         )}

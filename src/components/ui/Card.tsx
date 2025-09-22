@@ -10,7 +10,7 @@ const Card: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 }) => (
   <div
     className={clsx(
-      'rounded-2xl shadow-lg shadow-black/30 [box-shadow:0_0_0_1px_rgba(255,255,255,0.06),0_8px_30px_rgba(0,0,0,0.5)] bg-surface/80 border border-white/5 backdrop-blur-md',
+      'rounded-xl shadow-lg shadow-black/30 [box-shadow:0_0_0_1px_rgba(255,255,255,0.08),0_10px_40px_rgba(0,0,0,0.6)] bg-surface/90 border border-white/8 backdrop-blur-md transition-all duration-300 hover:translate-y-[-2px]',
       className
     )}
     {...props}
@@ -24,7 +24,7 @@ const CardHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   children,
   ...props
 }) => (
-  <div className={clsx('p-4 sm:p-5 border-b border-white/5', className)} {...props}>
+  <div className={clsx('p-7 sm:p-9 border-b border-white/8', className)} {...props}>
     {children}
   </div>
 )
@@ -34,7 +34,7 @@ const CardContent: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   children,
   ...props
 }) => (
-  <div className={clsx('p-4 sm:p-5', className)} {...props}>
+  <div className={clsx('p-7 sm:p-9', className)} {...props}>
     {children}
   </div>
 )
@@ -44,7 +44,7 @@ const CardFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   children,
   ...props
 }) => (
-  <div className={clsx('p-4 sm:p-5 border-t border-white/5', className)} {...props}>
+  <div className={clsx('p-7 sm:p-9 border-t border-white/8', className)} {...props}>
     {children}
   </div>
 )

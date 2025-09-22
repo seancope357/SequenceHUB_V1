@@ -5,19 +5,36 @@
 @import "tailwindcss";
 
 @theme {
-  /* Custom colors from design brief */
+  /* Custom colors from design brief - enhanced for better contrast and visual appeal */
   --color-neon-cyan: #00e5ff;
   --color-vibrant-purple: #b84fff;
   --color-golden-amber: #ffd54f;
-  --color-matte-black: #0b0b0b;
+  --color-matte-black: #0a0a0a;
   --color-charcoal-grey: #121212;
   
-  /* Extended color palette */
+  /* Extended color palette with additional shades */
   --color-primary: var(--color-neon-cyan);
+  --color-primary-light: #4df2ff;
+  --color-primary-dark: #00b8cc;
+  
   --color-secondary: var(--color-vibrant-purple);
+  --color-secondary-light: #ca7aff;
+  --color-secondary-dark: #9c3adf;
+  
   --color-accent: var(--color-golden-amber);
+  --color-accent-light: #ffe17f;
+  --color-accent-dark: #e6b800;
+  
   --color-background: var(--color-matte-black);
   --color-surface: var(--color-charcoal-grey);
+  --color-surface-light: #1a1a1a;
+  --color-surface-dark: #0f0f0f;
+  
+  /* Text colors */
+  --color-text-primary: rgba(255, 255, 255, 0.95);
+  --color-text-secondary: rgba(255, 255, 255, 0.8);
+  --color-text-tertiary: rgba(255, 255, 255, 0.6);
+  --color-text-disabled: rgba(255, 255, 255, 0.4);
   
   /* Typography */
   --font-family-heading: 'Poppins', system-ui, sans-serif;
@@ -42,7 +59,88 @@ body {
   background-color: var(--color-background);
   color: white;
   font-family: var(--font-family-body);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improved typography hierarchy */
+h1 {
+  font-family: var(--font-family-heading);
+  font-weight: 800;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.75rem;
+  color: white;
+}
+
+h2 {
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+h3 {
+  font-family: var(--font-family-heading);
+  font-weight: 600;
+  font-size: clamp(1.35rem, 2.75vw, 2.25rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.25rem;
+  color: white;
+}
+
+h4 {
+  font-family: var(--font-family-heading);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 2.25vw, 1.75rem);
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+h5, h6 {
+  font-family: var(--font-family-heading);
+  font-weight: 600;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.5;
+  margin-bottom: 0.875rem;
+  color: white;
+}
+
+/* Improved paragraph spacing */
+p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 70ch;
+}
+
+/* Better list spacing */
+ul, ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.75rem;
+}
+
+li {
+  margin-bottom: 0.625rem;
   line-height: 1.6;
+}
+
+/* Form elements spacing */
+input, textarea, select {
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
 }
 
 /* Custom glow effects */
@@ -92,24 +190,25 @@ body {
   background: rgba(0, 229, 255, 0.8);
 }
 
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-family-heading);
-  font-weight: 800;
-}
-
 /* Accent text */
 .font-accent {
   font-family: var(--font-family-accent);
+  letter-spacing: 0.02em;
 }
 
-/* Button base styles */
+/* Button base styles - updated for better spacing */
 .btn-base {
   border-radius: 12px;
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  letter-spacing: 0;
+  padding: 0.75rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .btn-primary {
@@ -131,4 +230,69 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent;
   border: 2px solid var(--color-primary);
   color: var(--color-primary);
+}
+
+/* Improved spacing utilities */
+.section-spacing {
+  padding: 5rem 0;
+}
+
+.container-spacing {
+  padding: 0 1.75rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Text spacing utilities */
+.text-spacing-sm {
+  letter-spacing: -0.01em;
+}
+
+.text-spacing-md {
+  letter-spacing: 0;
+}
+
+.text-spacing-lg {
+  letter-spacing: 0.02em;
+}
+
+/* Margin utilities */
+.mb-xs {
+  margin-bottom: 0.5rem;
+}
+
+.mb-sm {
+  margin-bottom: 1rem;
+}
+
+.mb-md {
+  margin-bottom: 1.5rem;
+}
+
+.mb-lg {
+  margin-bottom: 2.5rem;
+}
+
+.mb-xl {
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .container-spacing {
+    padding: 0 2.5rem;
+  }
+  
+  .section-spacing {
+    padding: 6.5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-spacing {
+    padding: 0 3rem;
+  }
+  
+  .section-spacing {
+    padding: 8.5rem 0;
+  }
 }

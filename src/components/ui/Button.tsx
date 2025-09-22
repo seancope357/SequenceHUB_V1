@@ -18,12 +18,12 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const sizes = {
-    sm: 'h-9 px-4 text-sm',
-    md: 'h-10 px-6 text-sm',
-    lg: 'h-12 px-8 text-base',
+    sm: 'h-10 px-6 py-2 text-sm font-medium',
+    md: 'h-11 px-8 py-2.5 text-sm font-medium',
+    lg: 'h-12 px-10 py-3 text-base font-medium',
   }[size]
 
-  const base = `inline-flex items-center justify-center rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background`
+  const base = `inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background whitespace-nowrap gap-3 min-w-[2.5rem]`
 
   const accents = {
     primary: {
