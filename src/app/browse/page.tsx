@@ -23,10 +23,18 @@ const sampleSequences: Sequence[] = Array.from({ length: 12 }).map((_, i) => ({
     'New Year\'s Eve Countdown',
     'Spring Awakening Bloom'
   ][i],
-  price: 15 + (i * 5) + Math.random() * 20,
+  price: [
+    29.99, 24.99, 34.99, 19.99, 39.99,
+    44.99, 27.99, 22.99, 32.99, 49.99,
+    17.99, 37.99
+  ][i],
   image: 'https://images.unsplash.com/photo-1545558014-8692c3eb5c50?q=80&w=800&auto=format&fit=crop',
   badge: i % 4 === 0 ? 'Hot' : i % 5 === 0 ? 'New' : i % 7 === 0 ? 'Featured' : undefined,
-  rating: 4 + Math.random(),
+  rating: [
+    4.8, 4.5, 4.9, 4.7, 4.6,
+    4.3, 4.7, 4.8, 4.4, 4.9,
+    4.5, 4.6
+  ][i],
   seller: [
     'LightMaster Pro',
     'Holiday Creator', 
@@ -34,15 +42,31 @@ const sampleSequences: Sequence[] = Array.from({ length: 12 }).map((_, i) => ({
     'Display Wizard',
     'Festive Lights Co'
   ][i % 5],
-  downloads: Math.floor(Math.random() * 5000) + 100,
-  duration: `${Math.floor(Math.random() * 8) + 2}:${String(Math.floor(Math.random() * 60)).padStart(2, '0')}`,
+  downloads: [
+    2847, 1923, 3542, 1256, 4721,
+    3198, 2456, 1875, 3087, 5124,
+    1532, 2976
+  ][i],
+  // Use fixed durations instead of random ones to avoid hydration errors
+  duration: [
+    '3:45', '4:20', '2:55', '5:10', '3:30', 
+    '4:15', '2:45', '3:20', '4:50', '5:25', 
+    '3:15', '4:30'
+  ][i],
   props: [
     ['RGB Lights', 'Pixel Strips', 'Matrix'],
     ['Spotlights', 'Floods', 'Laser'],
     ['DMX Controllers', 'Smart Plugs'],
     ['Inflatables', 'Props', 'Signs'],
-    ['Music Sync', 'Voice Control']
-  ][Math.floor(Math.random() * 5)]
+    ['Music Sync', 'Voice Control'],
+    ['RGB Lights', 'Pixel Strips', 'Matrix'],
+    ['Spotlights', 'Floods', 'Laser'],
+    ['DMX Controllers', 'Smart Plugs'],
+    ['Inflatables', 'Props', 'Signs'],
+    ['Music Sync', 'Voice Control'],
+    ['RGB Lights', 'Pixel Strips', 'Matrix'],
+    ['Spotlights', 'Floods', 'Laser']
+  ][i]
 }))
 
 const Hero: React.FC = () => (
