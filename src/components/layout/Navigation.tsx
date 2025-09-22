@@ -1,12 +1,24 @@
 'use client'
 
 import Link from 'next/link'
-import { Search, ShoppingCart, User, Menu } from 'lucide-react'
+import { Search, ShoppingCart, User, Menu, LogOut } from 'lucide-react'
 import { useState } from 'react'
 import Button from '@/components/ui/Button'
+import { useAuth } from '@/components/auth/AuthProvider'
+import { useRouter } from 'next/navigation'
 
 export default function Navigation() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const { user, supabase } = useAuth()
+  const router = useRouter()
+
+  const handleSignOut = async () => {
+    if (supabase) {
+      await supabase.auth.signOut()
+      router.push('/')
+      router.refresh()
+    }
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/5 bg-background/70 backdrop-blur-xl">
@@ -63,10 +75,32 @@ export default function Navigation() {
             </Link>
 
             {/* User Actions */}
-            <Button variant="outline" size="md">
-              <User className="h-4 w-4 md:mr-2" />
-              <span className="hidden md:inline">Sign In</span>
-            </Button>
+            {user ? (
+              <div className="flex items-center gap-2">
+                <Link
+                  href="/profile"
+                  className="p-2 rounded-full text-gray-400 hover:text-white hover:bg-surface/60 transition-colors"
+                  aria-label="User profile"
+                >
+                  <User className="h-5 w-5" />
+                </Link>
+                <Button 
+                  variant="outline" 
+                  size="md"
+                  onClick={handleSignOut}
+                >
+                  <LogOut className="h-4 w-4 md:mr-2" />
+                  <span className="hidden md:inline">Sign Out</span>
+                </Button>
+              </div>
+            ) : (
+              <Link href="/login">
+                <Button variant="outline" size="md">
+                  <User className="h-4 w-4 md:mr-2" />
+                  <span className="hidden md:inline">Sign In</span>
+                </Button>
+              </Link>
+            )}
 
             {/* Mobile menu toggle */}
             <button className="md:hidden p-2 rounded-full text-gray-400 hover:text-white hover:bg-surface/60 transition-colors">
