@@ -98,7 +98,7 @@ const SequenceCard: React.FC<{
 
         {/* Rating and Downloads */}
         <div className="flex items-center justify-between text-xs text-gray-400">
-          {sequence.rating && (
+          {sequence.rating !== undefined && (
             <div className="flex items-center gap-1">
               <div className="flex items-center">
                 {Array.from({ length: 5 }).map((_, i) => (
