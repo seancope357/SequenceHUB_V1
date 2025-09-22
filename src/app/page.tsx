@@ -27,12 +27,12 @@ export default async function Home() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/browse">
-              <Button size="lg" className="px-10 py-3 text-lg shadow-lg hover:shadow-primary/50 transition-all duration-300">
+              <Button size="lg" className="text-lg shadow-lg hover:shadow-primary/50 transition-all duration-300">
                 Browse Sequences
               </Button>
             </Link>
             <Link href="/become-seller">
-              <Button variant="outline" size="lg" accent="secondary" className="px-10 py-3 text-lg shadow-lg hover:shadow-secondary/50 transition-all duration-300">
+              <Button variant="outline" size="lg" accent="secondary" className="text-lg shadow-lg hover:shadow-secondary/50 transition-all duration-300">
                 Become a Seller
               </Button>
             </Link>
@@ -103,7 +103,7 @@ export default async function Home() {
           
           <div className="text-center mt-16">
             <Link href="/browse">
-              <Button size="lg" variant="outline" accent="primary" className="px-10 py-3 text-lg shadow-lg hover:shadow-primary/50 transition-all duration-300">
+              <Button size="lg" variant="outline" accent="primary" className="text-lg shadow-lg hover:shadow-primary/50 transition-all duration-300">
                 View All Sequences
               </Button>
             </Link>
@@ -126,7 +126,7 @@ export default async function Home() {
               placeholder="Your email address"
               className="max-w-sm w-full bg-background border-primary/30 focus:border-accent transition-colors text-white px-4 py-2 rounded-md"
             />
-            <Button accent="accent" className="px-8 py-2 text-lg shadow-lg hover:shadow-accent/50 transition-all duration-300">
+            <Button accent="accent" className="text-lg shadow-lg hover:shadow-accent/50 transition-all duration-300">
               Subscribe
             </Button>
           </div>
